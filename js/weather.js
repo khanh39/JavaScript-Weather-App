@@ -5,3 +5,7 @@ if("geolocation" in navigator) {
 } else {
     loadWeather("Toronto, CA", "");
 }
+
+$(document).ready(function() {
+    setInterval(getWeather, 10000);
+}
