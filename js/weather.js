@@ -19,7 +19,18 @@ function loadWeather(location, woeid) {
         city = weathr.city;
         temp = weather.temp+'&deg;';
         wcode = '<img class="weathericon" src="images/weathericons/' + weather.code +'.svg">';
-                                wind = '<p>' + weather.wind.speed + '</p><p>' + weath.units.speed '</p>';
-                                humidity = weather.humidity + ' %';
+        wind = '<p>' + weather.wind.speed + '</p><p>' + weath.units.speed '</p>';
+        humidity = weather.humidity + ' %';
 
-                                
+        $(".location").text(city);
+        $(".temperature").html(temp);
+        $(".climate bg").html(wode);
+        $("windspeed").html(wind);
+        $(".humidity").text(humidity);
+                            },
+
+        error: function(error) {
+          $(".error").html('<p' + error + '</p');
+        }
+    });
+  }
