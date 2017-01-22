@@ -1,36 +1,35 @@
-if("geolocation" in navigator) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        loadWeather (position.coords.latitude + ',' + position.coords.longitude);
+if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+        loadWeather(position.coords.latitude+','+position.coords.longitude);
     });
-} else {
-    loadWeather("Toronto, CA", "");
+} else{
+    loadWeather("Toronto,CA","");
 }
 
-$(document).ready(function() {
-    setInterval(getWeather, 10000);
-}
+$(document).ready(function(){
+    setInterval(getWeather,10000);
+});
 
-function loadWeather(location, woeid) {
+function loadWeather(location, woeid){
     $.simpleWeather({
-      location: location,
-      woeid: woeid,
-      unit: 'c',
-      success: function(weather) {
-        city = weathr.city;
-        temp = weather.temp+'&deg;';
-        wcode = '<img class="weathericon" src="images/weathericons/' + weather.code +'.svg">';
-        wind = '<p>' + weather.wind.speed + '</p><p>' + weath.units.speed '</p>';
-        humidity = weather.humidity + ' %';
-
-        $(".location").text(city);
-        $(".temperature").html(temp);
-        $(".climate bg").html(wode);
-        $("windspeed").html(wind);
-        $(".humidity").text(humidity);
-                            },
-
-        error: function(error) {
-          $(".error").html('<p' + error + '</p');
+        location: location,
+        woeid: woeid,
+        unit: 'C',
+        success: function(weather){
+            city = weather.city;
+            temp = weather.temp + '&deg;';
+            wcode = '<img class="weathericon" src="images/weathericons/'+weather.code+'.svg">';
+            wind = '<p>'+weather.wind.speed+'</p><p>'+weather.units.speed+'</p>';
+            humidity = weather.humidity+' %';
+            $(".location").text(city);
+            $(".temperature").html(temp);
+            $(".climate_bg").html(wcode);
+            $(".windspeed").html(wind);
+            $(".humidity").text(humidity);
+        },
+        error: function(error){
+            $(".error").html('<p>'+error+'</p>');
         }
+
     });
-  }
+}
